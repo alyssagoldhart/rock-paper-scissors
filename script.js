@@ -7,10 +7,10 @@ After 3 rounds we will count who has more points and declare an overall winner
 */
 
 function getComputerChoice() {
-let choice = Math.round(Math.random()) + Math.round(Math.random()) + 1;
-  switch (choice) {
+let computerChoice = Math.round(Math.random()) + Math.round(Math.random()) + 1;
+  switch (computerChoice) {
     case 1:
-      return 'Rock';
+      document.getElementById('computerResult');
       break;
     case 2:
       return 'Paper';
@@ -21,3 +21,18 @@ let choice = Math.round(Math.random()) + Math.round(Math.random()) + 1;
   }
 }
 
+// const choice1 = document.getElementById('rockButton');
+// const choice2 = document.getElementById('paperButton');
+// const choice3 = document.getElementById('scissorsButton');
+
+// choice1.addEventListener("click", getHumanChoice);
+// choice2.addEventListener("click", getHumanChoice);
+// choice3.addEventListener("click", getHumanChoice);
+
+function getHumanChoice() {
+  let humanChoice = prompt('Rock, paper or scissors?', ' ');
+    if (humanChoice != null) {
+    document.getElementById('humanResult').innerHTML =
+    'You picked: ' + humanChoice + '!';
+    }
+}
