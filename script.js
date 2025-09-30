@@ -1,11 +1,3 @@
-/* 
-There will be 3 rounds
-The computer will make a choice
-The user will make a choice
-Compare inputs and give a point to the winner of that round
-After 3 rounds we will count who has more points and declare an overall winner 
-*/
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -13,23 +5,22 @@ function getComputerChoice() {
   let computerChoice = Math.round(Math.random()) + Math.round(Math.random()) + 1;
     switch (computerChoice) {
       case 1:
-        document.getElementById('computerResult').innerHTML = 'rock';
+        console.log('Computer picked: rock');
         break;
       case 2:
-        document.getElementById('computerResult').innerHTML = 'paper';
+        console.log('Computer picked: paper')
         break;
       case 3:
-        document.getElementById('computerResult').innerHTML = 'scissors';
+        console.log('Computer picked: scissors')
         break;
     }
-  console.log(computerChoice);  
   return computerChoice;
 }
 
 function getHumanChoice() {
   let humanChoiceEntered = prompt('Rock, paper or scissors?', ' ');
   let humanChoice = humanChoiceEntered.toLowerCase();
-  document.getElementById('humanResult').innerHTML = humanChoice;
+  console.log('You picked: ' + humanChoice);
     switch (humanChoice) {
       case 'rock':
         humanChoice = 1;
@@ -41,33 +32,56 @@ function getHumanChoice() {
         humanChoice = 3;
         break;
     }
-  console.log(humanChoice); 
   return humanChoice;  
+}
+
+function keepScore(userScore, computerScore) {
+  console.log('User Score: ' + userScore);
+  console.log('Computer Score: ' + computerScore);
 }
 
 function playRound() {
   humanSelection = getHumanChoice();
   computerSelection = getComputerChoice();
   if (humanSelection == computerSelection) {
-    console.log('tie!');
-    document.getElementById('results').innerHTML = "It's a tie. Try again!";
+    console.log("It's a tie! There is no winner for this round.");
   } else if ((humanSelection == 1) && (computerSelection == 2)) {
-    document.getElementById('results').innerHTML = "Paper beats rock! The computer wins this round.";
+    console.log('Paper beats rock! The computer wins this round.');
     computerScore++;
   } else if ((humanSelection == 1) && (computerSelection == 3)) {
-    document.getElementById('results').innerHTML = "Rock beats scissors! The user wins this round.";
+    console.log('Rock beats scissors! The user wins this round.');
     humanScore++;
   } else if ((humanSelection == 2) && (computerSelection == 1)) {
-    document.getElementById('results').innerHTML = "Paper beats rock! The user wins this round.";
+    console.log('Paper beats rock! The user wins this round.');
     humanScore++;
   } else if ((humanSelection == 2) && (computerSelection == 3)) {
-    document.getElementById('results').innerHTML = "Scissors beat paper! The computer wins this round.";
+    console.log('Scissors beat paper! The computer wins this round.');
     computerScore++;
   } else if ((humanSelection == 3) && (computerSelection == 1)) {
-    document.getElementById('results').innerHTML = "Rocks beats scissors! The computer wins this round.";
+    console.log('Rock beats scissors! The computer wins this round.');
     computerScore++;
   } else if ((humanSelection == 3) && (computerSelection == 2)) {
-    document.getElementById('results').innerHTML = "Scissors beat paper! The user wins this round.";
+    console.log('Scissors beat paper! The user wins this round.');
     humanScore++;
+  }
+}
+
+function playGame() {
+  humanScore = 0;
+  computerScore = 0;
+  for (i = 1; i <= 5; i++) {
+    console.log('');
+    console.log(`Round ${i}`);
+    playRound();
+    keepScore(humanScore, computerScore);
+  } 
+  console.log('');
+  console.log('Final results:');
+  if (humanScore == computerScore) {
+    console.log("It's a tie! There is no winner. Try again.");
+  } else if (humanScore < computerScore) {
+    console.log('You won the game!');
+  } else if (humanScore > computerScore) {
+    console.log('Computer won the game!');
   }
 }
