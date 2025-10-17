@@ -8,31 +8,24 @@
 </head>
 <body>
   <h1>Rock-Paper-Scissors: You vs. the Computer</h1>
-  <div class="container-1">
-    <button onclick="playGame()">Click to play</button>
-   <!--
-     <div class="human-choice">
-      <p>Your Choice:</p>
-      <p id="humanResult"></p>
+    <div class="buttons">
+      <button id="rock">Rock</button>
+      <button id="paper">Paper</button>
+      <button id="scissors">Scissors</button>
     </div>
-    <div class="computer-choice">
-      <p>Computer's Choice:</p>
-      <p id="computerResult"></p>
+    <div class="container">
+      <div class="choices">
+        <p id="userChoice"></p>
+        <p id="computerChoice"></p>
+        <p id="results"></p>
+      </div>
+      <div class="scores">
+        <p id ="scores"></p>
+        <p id="userScore"></p>
+        <p id="computerScore"></p>
+      </div>
     </div>
-  </div>
-  <div class="container-2">
-    <div class="results">Results</div>
-      <p id="results"></p>
-    <div class="score">Score</div>
-      <p>User</p>
-      <p id="userScore"></p>
-      <p>Computer</p>
-      <p id="computerScore"></p>
-  </div>  
-  <div class="container-3">
-    <p class="finalResults"></p>
-  </div>
-  -->
+    <div id="winner"></div>
   <script src="script.js"></script>
 </body>
 </html>
